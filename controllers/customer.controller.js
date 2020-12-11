@@ -1,5 +1,9 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const dotenv = require('dotenv');
+dotenv.config();
+
+const { JWT_SECRET } = process.env;
 
 const Customer = require('../models/customer.model');
 
@@ -42,13 +46,9 @@ class CustomerController {
         password: hashPassword,
       });
       const savedCustomer = await customer.save();
-      const token = await jwt.sign(
-        { id: savedCustomer._id },
-        'customer_secretKey',
-        {
-          expiresIn: '2h',
-        }
-      );
+      const token = await jwt.sign({ id: savedCustomer._id }, JWT_SECRET, {
+        expiresIn: '2h',
+      });
       if (!savedCustomer) {
         return res.status(404).json({
           status: 'error',
@@ -105,13 +105,9 @@ class CustomerController {
           },
         });
       }
-      const token = await jwt.sign(
-        { email: user.email },
-        'customer_secretKey',
-        {
-          expiresIn: 3600,
-        }
-      );
+      const token = await jwt.sign({ email: user.email }, JWT_SECRET, {
+        expiresIn: 3600,
+      });
       const data = {
         fullname: user.fullname,
         email: user.email,

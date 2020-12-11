@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
 
-const DB_URI =
-  'mongodb+srv://alaoabiodun:alao1996@cluster0.jbxby.mongodb.net/shopping-db?retryWrites=true&w=majority';
+const { MONGO_URI } = process.env;
 
 const db = mongoose
-  .connect(DB_URI, {
+  .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
