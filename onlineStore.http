@@ -1,0 +1,51 @@
+# Online Shopping 
+
+# Get an Item
+GET http://localhost:4001/api/v1/suggested
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJlZWpheUBnbWFpbC5jb20iLCJpYXQiOjE2MDc2NzE0OTUsImV4cCI6MTYwNzY3NTA5NX0.Fn4KWJDpFYmitPHuB_BAqChrHUkXuBM3vu4wLS3j87I
+
+
+# User (Customer) account creation
+
+### Login Route
+
+POST http://localhost:4001/api/v1/login
+Content-Type: application/json
+
+{
+    "email": "beejay@gmail.com",
+    "password": "beejay1020"
+}
+
+
+### Register Route
+
+POST http://localhost:4001/api/v1/signUp
+Content-Type: application/json
+
+{
+    "fullname": "Lukman Gbolagade",
+    "email": "beejay@gmail.com",
+    "phone_number": "08172016238",
+    "address": "2 Johnson street bariga Lagos",
+    "gender": "Male",
+    "password": "beejay1020"
+}
+
+
+# Adding an item by User(Customer)
+
+### Add a suggestion for an item
+POST http://localhost:4001/api/v1/suggest
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJlZWpheUBnbWFpbC5jb20iLCJpYXQiOjE2MDc2NTU3MTYsImV4cCI6MTYwNzY1OTMxNn0.5vgWM8I7ypmwkNRJ1wOK5OsiHqgDMvr8vSH7t5uwQ7E
+
+{
+     "name":"Fruit",
+     "description":"Tech designed",
+     "category":"Grocery",
+     "reasons": "It will make your body stress free when coding."
+}
+
+
